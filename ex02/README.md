@@ -1,4 +1,4 @@
-# Node.js server 열어보기
+# Node.js 로 server 열기
 
 ## 기본적인 Node.js 서버 생성 코드
 ``` js
