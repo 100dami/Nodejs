@@ -9,7 +9,7 @@ http.createServer(function(request, response) {
    response.writeHead(200, {"Content-Type" : "text/plain"});
 
    /*
-   Response Body를 "Hellow World" 로 설정
+   Response Body를 "Hello World" 로 설정
     */
    response.end("Hello World\n");
 }).listen(8081);
