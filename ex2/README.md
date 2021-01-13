@@ -9,14 +9,14 @@ response.end('<h1>hello world</h1>');
 ```
 
 ### require(" ~ ") ?
-require 메서드를 통해 ``` 외부 모듈  ``` 을 가져올 수 있음       
+require 메서드를 통해 ``` 외부 모듈 ``` 을 가져올 수 있음       
 >
 ' http ' 모듈 ?
 > Node.js에서 ``` 가장 기본적인 웹 모듈 ``` <br>
 HTTP 웹 서버를 생성하는 것과 관련된 모든 기능을 담당함 <br>
 
 ### .createServer() ?
-사용자의 컴퓨터에 ``` 서버를 생성  ```하게 해주는 method  <br>  
+사용자의 컴퓨터에 ``` 서버를 생성 ```하게 해주는 method  <br>  
 
 ### function(request, response) { } ?
 > 클라이언트의 요청을 처리하기 위한 함수<br>
