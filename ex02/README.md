@@ -35,3 +35,28 @@ HTTP 웹 서버를 생성하는 것과 관련된 모든 기능을 담당함 <br>
 > () 안 숫자, ``` 8081 port ``` 에서 서버를 실행함 -> <br>
  ``` localhost:8081 ``` 에서 확인 가능 <br>
 
+===
+
+### HTTP 상태 코드
+* 1xx (조건부 응답)
+> 요청을 받았으며 작업을 계속한다.
+
+* 2xx (성공)
+> 이 클래스의 상태 코드는 클라이언트가 요청한 동작을 수신하여 이해했고 승낙했으며 성공적으로 처리했음을 가리킨다.
+
+* 3xx (리다이렉션 완료)
+> 클라이언트는 요청을 마치기 위해 추가 동작을 취해야 한다
+
+* 4xx (요청 오류)
+> 4xx 클래스의 상태 코드는 클라이언트에 오류가 있음을 나타낸다.
+
+### Content-Type
+**MIME 형식**
+* text/plain : 기본적인 텍스트 
+* text/html : HTML 
+* text/css : CSS 
+* text/xml : XML 
+* image/jpeg : JPG/JPEG 
+* image/png : PNG 
+* video/mpeg : MPEG 비디오파일 
+* audio/mp3 : MP3 
