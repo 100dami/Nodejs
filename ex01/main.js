@@ -17,7 +17,7 @@ var app = http.createServer(function (request, response) {
         return;
     }
     response.writeHead(200);
-    fs.readFile("./data/${queryData.id}","utf-8", function(err, description){
+    fs.readFile(`data/${queryData.id}`,"utf-8", function(err, description){
 
         // template literal : " ` `" , " ${} "
         var template = `        
