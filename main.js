@@ -12,7 +12,7 @@ var app = http.createServer(function (request, response) {
     if (pathname === "/") {
         if (queryData.id === undefined) {
 
-            fs.readdir("./ex01/data", function (error, filelist) {
+            fs.readdir("./data", function (error, filelist) {
                 console.log(filelist);
                 var title = "Welcome";
                 var description = "Hello, Node.js";
@@ -47,7 +47,7 @@ var app = http.createServer(function (request, response) {
 
 
         } else {
-            fs.readdir("./ex01/data", function (error, filelist) {
+            fs.readdir("./data", function (error, filelist) {
                 console.log(filelist);
                 var title = "Welcome";
                 var description = "Hello, Node.js";
