@@ -9,22 +9,22 @@ var app = http.createServer(function (request, response) {
 
     console.log(queryData.id); // id 출력
 
-    //console.log(url.parse(_url, true));
-    // if (_url == '/') {
-    //     title = "Welcome"; // url 부분이 / 이면 html title 을 "Welcome" 으로 바꿈
-    // }
-    // if (_url == '/favicon.ico') {
-    //     response.writeHead(404);
-    //     response.end();
-    //     return;
-    // }
-
     if (pathname === "/") {
         if (queryData.id === undefined) {
 
-            fs.readFile(`data/${queryData.id}`, "utf-8", function (err, description) {
+            fs.readdir("./ex01/data", function (error, filelist) {
+                console.log(filelist);
                 var title = "Welcome";
                 var description = "Hello, Node.js";
+                var list = "<ul>";
+
+                var i = 0;
+                while (i < filelist.length) {
+                    list = list + `<li><a href="/?id=${filelist[i]}">${filelist[i]}</a></li>`;
+                    i = i + 1;
+                }
+                list = list + "</ul>";
+
                 // template literal : " ` `" , " ${} "
                 var template = `        
                         <!doctype html>
@@ -35,25 +35,34 @@ var app = http.createServer(function (request, response) {
                     </head>
                     <body>
                     <h1><a href="/">WEB</a></h1>
-                    <ol>
-                        <li><a href="/?id=HTML">HTML</a></li>
-                        <li><a href="/?id=CSS">CSS</a></li>
-                        <li><a href="/?id=JavaScript">JavaScript</a></li>
-                    </ol>
+                    ${list}
                     <h2>${title}</h2>
                     <p>${description}</p>
                     </body>
                     </html> 
                     `;
                 response.writeHead(200);
-                // response.write("Hi Dami\n");
                 response.end(template); // 서버에 template 를 보여줌
-            });
+            })
+
+
         } else {
-            fs.readFile(`data/${queryData.id}`, "utf-8", function (err, description) {
-                var title = (queryData.id);
-                // template literal : " ` `" , " ${} "
-                var template = `        
+            fs.readdir("./ex01/data", function (error, filelist) {
+                console.log(filelist);
+                var title = "Welcome";
+                var description = "Hello, Node.js";
+                var list = "<ul>";
+
+                var i = 0;
+                while (i < filelist.length) {
+                    list = list + `<li><a href="/?id=${filelist[i]}">${filelist[i]}</a></li>`;
+                    i = i + 1;
+                }
+                list = list + "</ul>";
+                fs.readFile(`data/${queryData.id}`, "utf-8", function (err, description) {
+                    var title = (queryData.id);
+                    // template literal : " ` `" , " ${} "
+                    var template = `        
                         <!doctype html>
                     <html>
                     <head>
@@ -62,26 +71,23 @@ var app = http.createServer(function (request, response) {
                     </head>
                     <body>
                     <h1><a href="/">WEB</a></h1>
-                    <ol>
-                        <li><a href="/?id=HTML">HTML</a></li>
-                        <li><a href="/?id=CSS">CSS</a></li>
-                        <li><a href="/?id=JavaScript">JavaScript</a></li>
-                    </ol>
+                    ${list}
                     <h2>${title}</h2>
                     <p>${description}</p>
                     </body>
                     </html> 
                     `;
-                response.writeHead(200);
-                // response.write("Hi Dami\n");
-                response.end(template); // 서버에 template 를 보여줌
+                    response.writeHead(200);
+                    // response.write("Hi Dami\n");
+                    response.end(template); // 서버에 template 를 보여줌
+                });
             });
-        }
+            }
 
     } else {
-        response.writeHead(404);
-        response.end("Not Found");
-    }
+            response.writeHead(404);
+            response.end("Not Found");
+        }
 
-});
+    });
 app.listen(3000);
