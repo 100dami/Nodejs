@@ -1,2 +1,2 @@
-## Node.js 를 공부하고, 정리하는 repository (￣o￣) . z Z
+## egoing's Node.js 영상을 보고 공부하는 repository (￣o￣) . z Z
 
