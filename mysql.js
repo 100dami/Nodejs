@@ -3,7 +3,7 @@ var connection = mysql.createConnection({
     host : "localhost",
     user : "root",
     password : "0223",
-    database : "first"
+    database : "first" // database 위치 지정
 });
 
 connection.connect();
