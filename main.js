@@ -29,11 +29,11 @@ var app = http.createServer(function (request, response) {
                 var description = "Hello, Node js";
                 var list = template.list(topics);
                 var html = template.HTML(title, list,
-                    `<h2>${title}</h2>${description}`, `<h2>${title}</h2>${description}`,
+                    `<h2>${title}</h2>${description}`,
                     `<a href="/create">create</a>`
                 );
                 response.writeHead(200);
-                response.end("SUcess");
+                response.end(html);
             });
         } else {
             fs.readdir('./data', function (error, filelist) {
@@ -42,7 +42,7 @@ var app = http.createServer(function (request, response) {
                     var title = queryData.id;
                     var sanitizedTitle = sanitizeHtml(title);
                     var sanitizedDescription = sanitizeHtml(description);
-                    var list = template.list(topics);
+                    var list = template.list(filelist);
                     var html = template.HTML(title, list,
                         `<h2>${sanitizedTitle}</h2>${sanitizedDescription}`,
                         ` <a href="/create">create</a>
@@ -62,7 +62,7 @@ var app = http.createServer(function (request, response) {
             console.log(filelist);
             var title = "Web - create";
             var description = "Hello, Node.javascript ";
-            var list = template.list(topics);
+            var list = template.list(filelist);
             var html = template.HTML(title, list, `
             <form action="http://localhost:3000/create_process" method="post">
             <p><input type="text" name="title" placeholder="title"></p>
@@ -101,7 +101,7 @@ var app = http.createServer(function (request, response) {
             var filteredId = path.parse("queryData.id").base;
             fs.readFile(`data/${filteredId}`, 'utf8', function (err, description) {
                 var title = queryData.id;
-                var list = template.list(topics);
+                var list = template.list(filelist);
                 var html = template.HTML(title, list,
                     `
               <form action="/update_process" method="post">
