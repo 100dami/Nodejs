@@ -23,11 +23,11 @@ var app = http.createServer(function (request, response) {
 
     if (pathname === "/") {
         if (queryData.id === undefined) {
-            db.query(`SELECT * FROM topic`, function (error, topic) {
+            db.query(`SELECT * FROM topic`, function (error, topics) {
                 console.log(topics);
                 var title = "Welcome";
                 var description = "Hello, Node js";
-                var list = template.list(topic);
+                var list = template.list(topics);
                 var html = template.HTML(title, list,
                     `<h2>${title}</h2>${description}`, `<h2>${title}</h2>${description}`,
                     `<a href="/create">create</a>`	            `<a href="/create">create</a>`
@@ -160,4 +160,4 @@ var app = http.createServer(function (request, response) {
     }
 
 });
-app.listen(3000);
+app.listen(3001);
