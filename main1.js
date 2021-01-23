@@ -6,18 +6,20 @@ var template = require("./lib/template.js");
 var path = require("path");
 var sanitizeHtml = require('sanitize-html');
 var mysql = require("mysql");
+// 로딩된 모듈로부터 Connection 객체를 생성한다. 이 때 실제적인 Connection 연결은 이루어지지 않는다.
 var db = mysql.createConnection({
     host: "localhost",
     user: "root",
     password: "0223",
     database: "first" // database 위치 지정
 });
+// connect 메서드를 이용해서 connection을 연결
 db.connect();
 
 var app = http.createServer(function (request, response) {
     var _url = request.url;
     var queryData = url.parse(_url, true).query; // ? 뒤에 부분을 가져오게 하는 parse()
-    var pathname = url.parse(_url, true).pathname;
+    var pathname = url.parse(_url, true).pathname; // pathname : port 다음 query 전
 
     console.log(queryData.id); // id 출력
 
@@ -98,7 +100,7 @@ var app = http.createServer(function (request, response) {
                     if (error) {
                         throw error;
                     }
-                    response.writeHead(302, { Location: `/?id=${result.insertId}` });
+                    response.writeHead(302, { Location: `/?id=${result.insertId}` }); //  .insertID : db에 입력될때 생성되는 auto_increment 값 가져옴
                     response.end();
                 }
             )
